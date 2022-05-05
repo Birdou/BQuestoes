@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block content%}
+
+{% if status == "sucesso" %}
+{% include "core.questoes.html" %}
+
+<div class="container text-right text-uppercase">
+
+    {% if pag != 1 %}
+    <a href="{{ pag|add:" -1" }}" class="text-dark mr-4">
+        <i class='fas fa-arrow-alt-circle-left mr-1'></i>Mais recente</a>
+    {% endif %}
+
+    {% if ifNext %}
+    <a href="{{ pag|add:" 1"}}" class="text-dark">
+        Mais antigo <i class='fas fa-arrow-alt-circle-right'></i></a>
+    <hr class="hr-escuro my-4">
+    {% endif %}
+
+    {% if not ifNext and pag != 1 %}
+    <hr class="hr-escuro my-4">
+    {% endif %}
+
+</div>
+{% else %}
+<div class="container text-center my-5">
+    <h2 class="mb-5">{{msg}}</h2>
+    <hr class="hr-escuro my-4">
+</div>
+{% endif %}
+
+{% endblock %}
